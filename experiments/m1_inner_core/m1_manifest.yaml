@@ -2,12 +2,16 @@ experiment_id: m1_inner_core_lod_v001
 protocol_version: 0.5.0
 status: specified
 execution_gate: blocked_pending_observable_and_overlap_control
+gate1_audit_status: deferred_pending_reconstruction
+candidate_decision: not_yet_accepted
 purpose: test whether a pre-specified inner-core seismic observable improves one-day-ahead LOD prediction beyond a matched M0 control
 
 control:
   original_m0_test_interval: 2016-11-11 to 2026-07-18
   required_comparison: matched_rolling_m0_on_same_observed_interval
   original_m0_result_immutable: true
+  current_candidate_design: m1_overlap_2016_2023_only_if_reconstruction_succeeds
+  full_m0_comparison_supported: false
 
 observable:
   name: null
@@ -95,3 +99,6 @@ blocking_reasons:
   - temporal_coverage_not_audited
   - feature_construction_not_frozen
   - matched_rolling_m0_not_run
+  - event_station_waveform_inputs_not_hashed
+  - deterministic_pkikp_metric_not_frozen
+  - uncertainty_and_missingness_rules_not_frozen
