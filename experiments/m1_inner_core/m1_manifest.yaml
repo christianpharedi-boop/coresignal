@@ -4,6 +4,7 @@ status: specified
 execution_gate: blocked_pending_observable_and_overlap_control
 gate1_audit_status: deferred_pending_reconstruction
 candidate_decision: not_yet_accepted
+gate2_manifest: data/m1_gate2/gate2_acquisition_manifest.yaml
 purpose: test whether a pre-specified inner-core seismic observable improves one-day-ahead LOD prediction beyond a matched M0 control
 
 control:
@@ -102,3 +103,4 @@ blocking_reasons:
   - event_station_waveform_inputs_not_hashed
   - deterministic_pkikp_metric_not_frozen
   - uncertainty_and_missingness_rules_not_frozen
+  - gate2_source_package_not_acquired
