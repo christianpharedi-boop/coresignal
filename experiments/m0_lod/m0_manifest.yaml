@@ -1,6 +1,9 @@
 experiment_id: m0_lod_baseline_v001
 protocol_version: 0.4.0
 status: specified
+canonical_manifest: true
+supersedes:
+  - experiments/lod/lod_m0_baseline.yaml
 
 dataset:
   source_id: iers_eop20u24_c04_1962_now
@@ -31,6 +34,7 @@ model:
   lag: declared_per_model
 validation:
   method: fixed_temporal_holdout
+  rationale: canonical M0 benchmark uses the locked 70/15/15 chronological holdout; rolling-origin validation is reserved for M1 overlap control.
   final_test_locked: true
 primary_metric:
   name: rmse_ms

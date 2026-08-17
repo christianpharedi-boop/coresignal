@@ -1,4 +1,8 @@
 experiment_id: lod_m0_baseline_v001
+status: superseded
+canonical_manifest: false
+superseded_by: experiments/m0_lod/m0_manifest.yaml
+notes: Historical compatibility record retained for provenance; do not execute as the canonical M0 specification.
 
 target:
   variable: dLOD
@@ -12,7 +16,7 @@ model:
   lag: none
 
 validation:
-  method: rolling_origin
+  method: fixed_temporal_holdout
   final_test_locked: true
 
 primary_metric:

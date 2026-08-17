@@ -35,6 +35,8 @@ sources:
 
   - source_id: inner_core_seismic_primary
     domain: inner_core
+    planned_observable_type: event_level_pkikp_change_score
+    planned_observable_manifest: experiments/m1_inner_core/m1_manifest.yaml
     provider: to_be_verified
     dataset_name: published seismic inner-core rotation estimate
     status: planned

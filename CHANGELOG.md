@@ -4,6 +4,12 @@
 
 CoreSignal v0.3 establishes the data-acquisition and scientific-provenance layer.
 
+### Changed
+
+- Dataset admission now separates `analysis_admitted` from `redistribution_pending`; analysis rights and redistribution rights are tracked independently.
+- The canonical M0 specification is `experiments/m0_lod/m0_manifest.yaml`; the older `experiments/lod/lod_m0_baseline.yaml` is retained only as a superseded compatibility record.
+- IERS C04 parsing is centralized in `src/rotation/iers_c04.py` and used by both LOD command-line entry points.
+
 ### Added
 
 - Machine-readable data-source registry.
