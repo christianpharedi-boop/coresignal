@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "CoreSignal"
+message: "Please cite CoreSignal when using the software or reproducibility framework."
+type: software
+authors:
+  - family-names: "Pharedi"
+    given-names: "Basie"
+version: "0.1.0"
+date-released: "2026-08-17"

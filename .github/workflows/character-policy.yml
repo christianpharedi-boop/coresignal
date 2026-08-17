@@ -1,0 +1,26 @@
+name: English-only character policy
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  character-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan code, documentation, notebooks, figures, and manuscript assets
+        run: python scripts/check_english_only.py .
+
+      - name: Run character-policy tests
+        run: python -m unittest discover -s tests -v
