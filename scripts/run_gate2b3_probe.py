@@ -1,17 +1,17 @@
 """Execute the frozen Gate 2B.3 archive-coverage probe without waveform analysis."""
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUESTS_PATH = ROOT / "reports/m1_gate2b3/probe_requests.json"
-RAW_DIR = Path("/home/ubuntu/coresignal_work/gate2b3_probe/raw")
-RESULT_PATH = ROOT / "reports/m1_gate2b3/probe_results.json"
+DEFAULT_RAW_DIR = Path("/home/ubuntu/coresignal_work/gate2b3_probe/raw")
+DEFAULT_RESULT_PATH = ROOT / "reports/m1_gate2b3/probe_results.json"
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -19,13 +19,17 @@ def sha256_bytes(data: bytes) -> str:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=DEFAULT_RESULT_PATH)
+    parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
+    args = parser.parse_args()
     request_doc = json.loads(REQUESTS_PATH.read_text(encoding="utf-8"))
     request_set_hash = sha256_bytes(REQUESTS_PATH.read_bytes())
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    args.raw_dir.mkdir(parents=True, exist_ok=True)
     results = []
     for index, request in enumerate(request_doc["requests"], start=1):
         filename = f"probe_{index:03d}_{request['pair_id']}_{request['station']}.mseed"
-        output_path = RAW_DIR / filename
+        output_path = args.raw_dir / filename
         record = {
             "probe_index": index,
             "pair_id": request["pair_id"],
@@ -82,7 +86,8 @@ def main() -> int:
         "waveform_requests": results,
         "full_acquisition_authorized": coverage == "COVERAGE_ESTABLISHED",
     }
-    RESULT_PATH.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
         "coverage_status": coverage,
         "request_set_sha256": request_set_hash,
