@@ -1,0 +1,144 @@
+ledger:
+  ledger_id: gate2a_wang2024_pkikp
+  schema_version: "1.0.0"
+  experiment_id: m1_inner_core
+  gate: M1-Gate-2A
+  frozen_manifest_id: pkikp_change_candidate_001
+  created_utc: "2026-08-17T00:00:00Z"
+  execution_policy: fail_closed
+
+files:
+  - record_id: gate2a_file_0001
+    manifest_file_id: wang2024_supplementary_event_table
+    status: PLANNED
+    file_state: required
+    description: Event identifiers and origin metadata.
+    scientific_role: event_table
+    source:
+      provider: Nature supplementary materials
+      source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11236701/
+      source_version: Wang_2024_supplementary_materials_pending_import
+      access_method: supplementary_material
+    acquisition:
+      acquisition_timestamp_utc: null
+      original_filename: null
+      byte_size: null
+      transfer_status: FAILED
+    integrity:
+      sha256: null
+      hash_algorithm: SHA-256
+    licence:
+      status: PENDING
+      name: null
+      evidence: null
+    verification:
+      status: PENDING
+      verified_at_utc: null
+      checks: {}
+    execution:
+      status: BLOCKED
+      blocking: true
+      blocking_reasons: [not_acquired, not_hashed, not_verified]
+
+  - record_id: gate2a_file_0002
+    manifest_file_id: wang2024_supplementary_event_pair_table
+    status: PLANNED
+    file_state: required
+    description: Repeating-event pair and waveform-comparison metadata.
+    scientific_role: event_pair_table
+    source:
+      provider: Nature supplementary materials
+      source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11236701/
+      source_version: Wang_2024_supplementary_materials_pending_import
+      access_method: supplementary_material
+    acquisition:
+      acquisition_timestamp_utc: null
+      original_filename: null
+      byte_size: null
+      transfer_status: FAILED
+    integrity:
+      sha256: null
+      hash_algorithm: SHA-256
+    licence:
+      status: PENDING
+      name: null
+      evidence: null
+    verification:
+      status: PENDING
+      verified_at_utc: null
+      checks: {}
+    execution:
+      status: BLOCKED
+      blocking: true
+      blocking_reasons: [not_acquired, not_hashed, not_verified]
+
+  - record_id: gate2a_file_0003
+    manifest_file_id: ilar_yka_station_metadata
+    status: PLANNED
+    file_state: required
+    description: Station and array metadata required for waveform reconstruction.
+    scientific_role: station_table
+    source:
+      provider: EarthScope IRIS
+      source_url: https://ds.iris.edu/ds/nodes/dmc/data/types/waveform-data/
+      source_version: station_metadata_pending_request
+      access_method: api
+    acquisition:
+      acquisition_timestamp_utc: null
+      original_filename: null
+      byte_size: null
+      transfer_status: FAILED
+    integrity:
+      sha256: null
+      hash_algorithm: SHA-256
+    licence:
+      status: PENDING
+      name: null
+      evidence: null
+    verification:
+      status: PENDING
+      verified_at_utc: null
+      checks: {}
+    execution:
+      status: BLOCKED
+      blocking: true
+      blocking_reasons: [not_acquired, not_hashed, not_verified]
+
+  - record_id: gate2a_file_0004
+    manifest_file_id: pkikp_waveform_references
+    status: PLANNED
+    file_state: required
+    description: Waveform request and retrieval references for ILAR, YKA, and CNSN sources.
+    scientific_role: waveform_reference
+    source:
+      provider: EarthScope IRIS and CNSN
+      source_url: https://ds.iris.edu/ds/nodes/dmc/data/types/waveform-data/
+      source_version: waveform_request_package_pending_reconstruction
+      access_method: api
+    acquisition:
+      acquisition_timestamp_utc: null
+      original_filename: null
+      byte_size: null
+      transfer_status: FAILED
+    integrity:
+      sha256: null
+      hash_algorithm: SHA-256
+    licence:
+      status: PENDING
+      name: null
+      evidence: null
+    verification:
+      status: PENDING
+      verified_at_utc: null
+      checks: {}
+    execution:
+      status: BLOCKED
+      blocking: true
+      blocking_reasons: [not_acquired, not_hashed, not_verified]
+
+ledger_integrity:
+  record_count: 4
+  unique_record_ids: true
+  unique_manifest_file_ids: true
+  all_required_files_present: true
+  ledger_status: BLOCKED
