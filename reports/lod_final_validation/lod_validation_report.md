@@ -42,9 +42,9 @@ LOD formal-error range: **0.0000062 to 0.0014310 s**
 
 ## Important provenance observation
 
-The IERS version-metadata page currently describes the 20u24 C04 product and its daily 0h UTC structure, but its displayed metadata record is not synchronized with the newer bytes retrieved from the data directory: the metadata page reports 23,558 points through 2026-07-01, while the acquired file contains 23,575 records through 2026-07-18.
+The IERS version-metadata page identifies the 20u24 C04 product, its daily 0h UTC structure, and the same 23,575 records from 1962-01-01 through 2026-07-18 for the current snapshot. The raw header uses the broader `EOP (IERS) 20 C04` wording, while the catalogue identifies the release family as `20u24`; CoreSignal preserves both the exact header and catalogue identity rather than silently normalizing the product name.
 
-CoreSignal therefore treats the **downloaded bytes plus their SHA-256** as the immutable acquisition snapshot and records the discrepancy rather than silently substituting the metadata count.
+CoreSignal treats the **downloaded bytes plus their SHA-256** as the immutable acquisition snapshot.
 
 ## Admission
 
@@ -58,7 +58,7 @@ Therefore the scientifically correct final state is:
 
 It is **not yet `ADMITTED`**.
 
-No scientific modelling should consume this dataset under the CoreSignal `ADMITTED` gate until the repository's licence policy is satisfied.
+The dataset may be consumed by the controlled analysis workflow only under the separate `ANALYSIS_ADMITTED` policy. It must not be redistributed, and it must not receive the combined `ADMITTED` status, until the repository's redistribution-rights policy is satisfied.
 
 ## Reproducibility
 
