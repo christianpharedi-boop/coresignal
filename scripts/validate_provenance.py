@@ -17,7 +17,7 @@ REQUIRED = [
 
 ALLOWED_STATUS = {
     "planned", "discovered", "metadata_verified", "acquired",
-    "hashed", "parsed", "quality_checked", "admitted", "rejected",
+    "hashed", "parsed", "quality_checked", "quality_checked_pending_license", "admitted", "rejected",
 }
 
 def simple_yaml_blocks(text: str):
@@ -30,7 +30,7 @@ def simple_yaml_blocks(text: str):
             current = {}
             key, value = line.strip()[2:].split(":", 1)
             current[key.strip()] = value.strip()
-        elif current and re.match(r"    [A-Za-z_]+:", line):
+        elif current and re.match(r"    [A-Za-z0-9_]+:", line):
             key, value = line.strip().split(":", 1)
             current[key.strip()] = value.strip()
     if current:
@@ -65,10 +65,15 @@ def validate_root(root: Path):
         if status not in ALLOWED_STATUS:
             errors.append(f"{prefix}: invalid status {status}")
 
-        if status == "admitted":
+        if status in {"quality_checked", "quality_checked_pending_license", "admitted"}:
             for key in ("sha256", "byte_size"):
                 if not record.get(key) or record[key] in {"null", "to_be_recorded"}:
-                    errors.append(f"{prefix}: admitted source missing {key}")
+                    errors.append(f"{prefix}: {status} source missing {key}")
+        if status == "quality_checked_pending_license":
+            if record.get("analysis_status") != "analysis_admitted":
+                errors.append(f"{prefix}: pending-license source must declare analysis_status=analysis_admitted")
+            if record.get("redistribution_status") != "redistribution_pending":
+                errors.append(f"{prefix}: pending-license source must declare redistribution_status=redistribution_pending")
 
     return 1 if errors else 0
 
