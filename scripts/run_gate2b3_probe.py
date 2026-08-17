@@ -64,7 +64,6 @@ def main() -> int:
             output_path.write_bytes(b"")
         results.append(record)
 
-    statuses = [record.get("http_status") for record in results]
     successful = [record for record in results if record.get("http_status") == 200 and record.get("response_bytes", 0) > 0]
     responses_without_bytes = [record for record in results if record.get("http_status") is not None and record.get("response_bytes", 0) == 0]
     if len(successful) == len(results):
