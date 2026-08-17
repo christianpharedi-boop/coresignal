@@ -1,0 +1,57 @@
+# CoreSignal data-source registry.
+# Sources remain planned until their metadata and licensing are verified.
+
+sources:
+  - source_id: eop_lod_primary
+    domain: earth_rotation
+    provider: IERS
+    dataset_name: Earth orientation and length-of-day series
+    status: planned
+    source_reference: to_be_verified
+    access_date: to_be_recorded
+    license: to_be_verified
+    time_coverage: to_be_verified
+    sampling_interval: to_be_verified
+    units: milliseconds
+    reference_frame: to_be_verified
+    quality_flags: to_be_verified
+    local_file: null
+    sha256: null
+    byte_size: null
+    notes: Candidate primary LOD source. Do not admit until metadata are verified.
+
+  - source_id: inner_core_seismic_primary
+    domain: inner_core
+    provider: to_be_verified
+    dataset_name: published seismic inner-core rotation estimate
+    status: planned
+    source_reference: to_be_verified
+    access_date: to_be_recorded
+    license: to_be_verified
+    time_coverage: to_be_verified
+    sampling_interval: to_be_verified
+    units: to_be_verified
+    reference_frame: to_be_verified
+    quality_flags: to_be_verified
+    local_file: null
+    sha256: null
+    byte_size: null
+    notes: Candidate source. Exact publication dataset must be verified before acquisition.
+
+  - source_id: geomagnetic_primary
+    domain: geomagnetic
+    provider: to_be_verified
+    dataset_name: geomagnetic secular-variation product
+    status: planned
+    source_reference: to_be_verified
+    access_date: to_be_recorded
+    license: to_be_verified
+    time_coverage: to_be_verified
+    sampling_interval: to_be_verified
+    units: to_be_verified
+    reference_frame: to_be_verified
+    quality_flags: to_be_verified
+    local_file: null
+    sha256: null
+    byte_size: null
+    notes: Candidate source. Exact product must be verified before acquisition.

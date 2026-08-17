@@ -1,1 +1,1 @@
-"""CoreSignal package."""
+"""CoreSignal rotation package."""

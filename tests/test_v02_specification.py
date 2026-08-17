@@ -38,11 +38,12 @@ class V02SpecificationTests(unittest.TestCase):
             self.assertEqual(validate_manifest(path), [], str(path))
 
     def test_provenance_registry_is_present_and_unfilled_sources_are_planned(self):
-        path = ROOT / "data/provenance/registry.yaml"
+        path = ROOT / "data/registry.yaml"
         self.assertTrue(path.exists())
         text = path.read_text(encoding="utf-8")
-        self.assertIn("required_fields:", text)
+        self.assertIn("sources:", text)
         self.assertIn("status: planned", text)
+        self.assertIn("sha256: null", text)
 
     def test_author_metadata_is_present(self):
         citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
