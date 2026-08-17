@@ -1,0 +1,74 @@
+# CoreSignal data-source registry.
+# A source remains planned until every required provenance field is completed.
+registry_version: "0.1"
+status_vocabulary:
+  - planned
+  - admitted
+  - blocked
+required_fields:
+  - provider
+  - dataset
+  - version
+  - persistent_identifier
+  - source_reference
+  - access_date
+  - license
+  - time_coverage
+  - sampling_interval
+  - units
+  - coordinate_reference_frame
+  - quality_flags
+  - preprocessing
+  - source_file_sha256
+sources:
+  - source_id: earth_rotation_lod_primary
+    domain: earth_rotation
+    status: planned
+    provider: ""
+    dataset: ""
+    version: ""
+    persistent_identifier: ""
+    source_reference: ""
+    access_date: ""
+    license: ""
+    time_coverage: ""
+    sampling_interval: ""
+    units: ""
+    coordinate_reference_frame: ""
+    quality_flags: ""
+    preprocessing: ""
+    source_file_sha256: ""
+  - source_id: inner_core_seismic_primary
+    domain: inner_core
+    status: planned
+    provider: ""
+    dataset: ""
+    version: ""
+    persistent_identifier: ""
+    source_reference: ""
+    access_date: ""
+    license: ""
+    time_coverage: ""
+    sampling_interval: ""
+    units: ""
+    coordinate_reference_frame: ""
+    quality_flags: ""
+    preprocessing: ""
+    source_file_sha256: ""
+  - source_id: geomagnetic_primary
+    domain: geomagnetism
+    status: planned
+    provider: ""
+    dataset: ""
+    version: ""
+    persistent_identifier: ""
+    source_reference: ""
+    access_date: ""
+    license: ""
+    time_coverage: ""
+    sampling_interval: ""
+    units: ""
+    coordinate_reference_frame: ""
+    quality_flags: ""
+    preprocessing: ""
+    source_file_sha256: ""

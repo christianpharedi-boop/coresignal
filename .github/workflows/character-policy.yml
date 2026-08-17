@@ -19,8 +19,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install validation dependency
+        run: python -m pip install pyyaml
+
       - name: Scan code, documentation, notebooks, figures, and manuscript assets
         run: python scripts/check_english_only.py .
 
-      - name: Run character-policy tests
+      - name: Validate experiment manifests
+        run: python scripts/validate_manifests.py .
+
+      - name: Run repository tests
         run: python -m unittest discover -s tests -v
