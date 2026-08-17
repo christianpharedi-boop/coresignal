@@ -1,17 +1,19 @@
 observable_id: pkikp_change_candidate_001
 manifest_version: 0.1.0
-status: frozen_acquisition_requirements
+status: G2A_SOURCE_PACKAGE_VERIFIED
 execution:
   allowed: false
   modeling_allowed: false
-  reason: source_package_and_feature_definition_not_reconstructed
+  reconstruction_allowed: true
+  reason: Gate 2B event/station reconstruction remains required before waveform retrieval or measurement construction
+source_package_verification_record: docs/G2A_SOURCE_PACKAGE_VERIFICATION.md
 
 source:
   publication: Wang_2024_Nature_inner_core_backtracking
   publication_doi: 10.1038/s41586-024-07536-4
   publication_url: https://www.nature.com/articles/s41586-024-07536-4
   open_full_text_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11236701/
-  supplementary_version: pending_import
+  supplementary_version: Wang_2024_Nature_DOI_10.1038_s41586-024-07536-4_MOESM1_MOESM2
   supplementary_source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11236701/
   waveform_archives:
     - name: EarthScope_IRIS
@@ -20,7 +22,19 @@ source:
     - name: Canadian_National_Seismograph_Network
       source_url: https://earthquakescanada.nrcan.gc.ca/stndon/CNSN-RNSC/index-en.php
       status: source_identified_pending_request
-  files: []
+  files:
+    - record_id: gate2a_file_0001
+      manifest_file_id: wang2024_supplementary_event_table
+      status: VERIFIED
+    - record_id: gate2a_file_0002
+      manifest_file_id: wang2024_supplementary_event_pair_table
+      status: VERIFIED
+    - record_id: gate2a_file_0003
+      manifest_file_id: ilar_yka_station_metadata_query_specification
+      status: VERIFIED
+    - record_id: gate2a_file_0004
+      manifest_file_id: pkikp_waveform_query_specification
+      status: VERIFIED
 
 files:
   required_fields:
@@ -31,7 +45,7 @@ files:
     - sha256
     - byte_size
     - licence_or_access_basis
-  status: pending_import
+  status: verified_as_query_specification
 
 observations:
   events:
@@ -46,7 +60,7 @@ observations:
       - YKA
     ids: []
   waveform_references:
-    status: pending_request
+    status: verified_as_query_specification
     records: []
 
 measurement:
@@ -89,7 +103,7 @@ lod_independence:
 hashing:
   algorithm: SHA-256
   raw_and_derived_files_required: true
-  status: pending_import
+  status: verified
 
 reconstruction:
   sequence:
@@ -103,7 +117,7 @@ reconstruction:
     - uncertainty_model_frozen
     - coverage_verified
     - matched_m0_overlap_control_created
-  status: not_started
+  status: ready_for_gate2b
 
 decision:
   allowed: [ACCEPT, DEFER, REJECT]
