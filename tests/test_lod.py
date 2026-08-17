@@ -23,6 +23,17 @@ class LODValidationTests(unittest.TestCase):
         records = [LODRecord(date(2020, 1, 1), 0.25, "")]
         self.assertTrue(validate_lod(records))
 
+    def test_committed_inventory_artifact_is_quality_checked(self):
+        import json
+
+        report = ROOT / "reports/lod_inventory/eop20_c04_qc.json"
+        self.assertTrue(report.exists())
+        document = json.loads(report.read_text(encoding="utf-8"))
+        self.assertEqual(document["status"], "quality_checked")
+        self.assertGreater(document["record_count"], 0)
+        self.assertEqual(document["date_gap_count"], 0)
+        self.assertEqual(document["validation_error_count"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

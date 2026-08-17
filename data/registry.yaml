@@ -1,24 +1,24 @@
 # CoreSignal data-source registry.
-# Sources remain planned until their metadata and licensing are verified.
+# Sources advance through the lifecycle only when the corresponding checks pass.
 
 sources:
   - source_id: eop_lod_primary
     domain: earth_rotation
-    provider: IERS
-    dataset_name: Earth orientation and length-of-day series
-    status: planned
-    source_reference: to_be_verified
-    access_date: to_be_recorded
-    license: to_be_verified
-    time_coverage: to_be_verified
-    sampling_interval: to_be_verified
-    units: milliseconds
-    reference_frame: to_be_verified
-    quality_flags: to_be_verified
-    local_file: null
-    sha256: null
-    byte_size: null
-    notes: Candidate primary LOD source. Do not admit until metadata are verified.
+    provider: IERS Earth Orientation Centre
+    dataset_name: EOP 20 C04 combined series, eopc04.1962-now
+    status: quality_checked
+    source_reference: https://hpiers.obspm.fr/eoppc/eop/eopc04/eopc04.1962-now
+    access_date: 2026-08-17
+    license: IERS online distribution; verify redistribution terms before committing raw bytes
+    time_coverage: 1962-01-01 to 2026-07-18 in acquired file
+    sampling_interval: 1 day at 0h UTC
+    units: LOD in seconds; source also includes UT1-UTC and EOP fields
+    reference_frame: ITRF 2020; IAU 2000 header convention
+    quality_flags: formal error columns including LOD error; parser and QC report required
+    local_file: data/raw/iers_eop20_c04/eopc04.1962-now
+    sha256: 0a9592923561528b8e1dcb9ea3628583f9687a2424ad82d3f62d2a71c819a8de
+    byte_size: 5163654
+    notes: Parsed and quality-checked successfully; admission remains blocked until redistribution terms and final provenance review are complete. QC report: reports/lod_inventory/eop20_c04_qc.json.
 
   - source_id: inner_core_seismic_primary
     domain: inner_core
